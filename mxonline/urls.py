@@ -15,14 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import url
 import xadmin
-from django.contrib import admin
 from django.views.generic import TemplateView
 from apps.users import views
 
 urlpatterns = [
     # url(r'^admin/', admin.site.urls),
     url(r'^xadmin/', xadmin.site.urls),
-    # TemplateView省略view层，直接在url层面返回页面。name取一个url别名，可任意修改url
-    url(r'^$', TemplateView.as_view(template_name="index.html"), name="index"),
-    url(r'^login/$', views.LoginView.as_view(), name="login")
+    # name取一个url别名，可任意修改url
+    url(r'^$', views.IndexView.as_view(), name="index"),
+    url(r'^login/$', views.LoginView.as_view(), name="login"),
+    url(r'^register/$', views.RegisterView.as_view(), name="register"),
+    # 极验滑动验证码 获取验证码的url
+    url(r'^pc-geetest/register', views.get_geetest),
 ]

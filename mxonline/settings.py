@@ -132,3 +132,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
+
+# 重载AUTHENTICATION_BACKENDS变量
+AUTHENTICATION_BACKENDS = (
+    'apps.users.utils.auth_users.CustomBackend',
+)
