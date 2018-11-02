@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>幼儿园登录页面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+    <script src="../static/jquery-3.2.1.min.js"></script>
+    <script src="../static/bootstrap/js/bootstrap.min.js"></script>
+    <style>
+         body {
+             background-color: #eee;
+         }
+        #login-box {
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div id="login-box" class="col-md-4 col-md-offset-4">
+            <h3 class="text-center">请登录</h3>
+            <form action="/login/" method="post" autocomplete="off" class="form-horizontal">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="inputText" class="col-md-3 control-label">用户名</label>
+                    <div class="col-md-9">
+                        <input type="text" name="name" class="form-control" id="inputText" placeholder="用户名">
+                    </div>
+                    <p style="color: red;">{{ res.msg }}</p>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-md-3 control-label">密码</label>
+                    <div class="col-md-9">
+                        <input type="password" name="pwd" class="form-control" id="inputPassword3" placeholder="Password">
+                    </div>
+                    <p style="color: red">{{ res.msg }}</p>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-md-9">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox">记住我
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-md-9">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">登录</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
